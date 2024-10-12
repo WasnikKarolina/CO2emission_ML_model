@@ -7,19 +7,27 @@ path = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDe
 df = pd.read_csv(path)
 
 # Displaying the first five rows and statistics
+print("\n")
+print("first rows of the dataset: ")
+print("\n")
 print(df.head())
+print("\n")
+print("calculated statistics: ")
+print("\n")
 print(df.describe())
 
 # Selecting relevant features
 cdf = df[['ENGINESIZE', 'CYLINDERS', 'FUELCONSUMPTION_COMB', 'CO2EMISSIONS']]
 
-# Visualizng the data
+# Visualizng the data with histograms 
 viz = cdf[['CYLINDERS', 'ENGINESIZE', 'CO2EMISSIONS', 'FUELCONSUMPTION_COMB']]
 viz.hist()
+plt.suptitle("Histograms") 
 plt.show()
 
+
 plt.scatter(cdf.FUELCONSUMPTION_COMB, cdf.CO2EMISSIONS, color='blue')
-plt.xlabel("FUELCONSUMPTION_COMB")
+plt.xlabel("Fuel consumption")
 plt.ylabel("Emission")
 plt.title("Fuel consumption vs CO2 emission") 
 plt.show()
@@ -42,11 +50,7 @@ train = cdf[msk]
 test = cdf[~msk]
 
 # Training the model
-plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS, color='blue')
-plt.xlabel("Engine size")
-plt.ylabel("Emission")
-plt.title("Training data")
-plt.show()
+
 
 from sklearn import linear_model
 regr = linear_model.LinearRegression()
@@ -76,9 +80,10 @@ def predict_co2(engine_size, cylinders, fuel_consumption):
     predicted_co2 = regr.predict(input_features)
     return predicted_co2[0][0]
 
-input_engine_size = float(input("Enter the engine size to predict CO2 emissions: "))
+print("\n")
+input_engine_size = float(input("Enter the engine size to predict CO2 emissions (L): "))
 input_cylinders = int(input("Enter the number of cylinders: "))
-input_fuel_consumption = float(input("Enter the fuel consumption: "))
-
+input_fuel_consumption = float(input("Enter the fuel consumption (L/100 km): "))
+print("\n")
 predicted_co2 = predict_co2(input_engine_size, input_cylinders, input_fuel_consumption)
 print(f"Predicted CO2 emissions for engine size {input_engine_size}, cylinders {input_cylinders}, and fuel consumption {input_fuel_consumption}: {predicted_co2:.2f}")
