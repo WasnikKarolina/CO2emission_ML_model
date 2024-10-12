@@ -1,6 +1,6 @@
 
  
-# Multiple Linear Regression for CO2 Emissions Prediction
+# Multiple Linear Regression for CO2 Emissions Prediction 
 ## Project Overview
 
 The product is a ML algorithm used to predict the future CO2 emission of cars based on past data of the fuel consumption, engine size, number of cylinders and CO2 emission. The model utilizes multiple linear regression to predict the unknown values. The script allows you to visualise the data and outputs the predicted CO2 emission of chosen vehicles after the user inputs values for engine size, number of cylinders, and fuel consumption. 
@@ -35,6 +35,6 @@ scikit-learn
 ## Model Evaluation
 The model is evaluated using the following metrics:
 
-Mean Absolute Error (MAE)
-Residual Sum of Squares (RSS)
+Mean Absolute Error (MAE) <br>
+Residual Sum of Squares (RSS) <br>
 R2 Score
